@@ -1,0 +1,32 @@
+name: Conference_3Way
+description: VoLTE 3-way conference call flow
+
+devices:
+  - label: HOST
+    os: Android
+  - label: PARTY_A
+    os: Android
+  - label: PARTY_B
+    os: iOS
+
+prompt: |
+  Execute VoLTE 3-way conference call certification.
+
+  Devices: HOST (Android), PARTY_A (Android), PARTY_B (iOS).
+
+  1. Reserve HOST, PARTY_A, and PARTY_B devices.
+  2. Verify all three devices are on LTE. Log PASS/FAIL for each.
+  3. Start recordings on all three.
+  4. HOST calls PARTY_A. Wait for PARTY_A to ring, then PARTY_A answers.
+  5. Verify both HOST and PARTY_A show 'active'. Log PASS/FAIL.
+  6. HOST puts PARTY_A on hold.
+  7. Verify PARTY_A shows 'held'. Log PASS/FAIL.
+  8. HOST calls PARTY_B. Wait for PARTY_B to ring, then PARTY_B answers.
+  9. Verify HOST and PARTY_B show 'active'. Log PASS/FAIL.
+  10. HOST merges calls (conference).
+  11. Verify all three parties are in conference (check HOST call state). Log PASS/FAIL.
+  12. HOST ends the conference.
+  13. Verify all three devices return to 'idle'. Log PASS/FAIL.
+  14. Stop recordings. Fetch execution reports.
+  15. Release all devices.
+  Final verdict with per-step summary.

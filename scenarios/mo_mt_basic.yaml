@@ -1,0 +1,37 @@
+name: MO_MT_Basic_Call
+description: VoLTE Mobile Originating / Mobile Terminating basic call flow
+
+# Which devices are needed and what type
+devices:
+  - label: MO
+    os: Android
+    operator: AT&T
+  - label: MT
+    os: iOS
+    operator: T-Mobile
+
+# Natural language prompt handed to Claude
+prompt: |
+  Execute VoLTE MO/MT Basic Call certification using the reserved devices.
+
+  The MO device (Android/AT&T) will originate the call.
+  The MT device (iOS/T-Mobile) will receive and answer.
+
+  Test sequence:
+  1. Reserve the MO (Android, AT&T) and MT (iOS, T-Mobile) devices.
+  2. Verify both devices are on LTE network. Log PASS/FAIL.
+  3. Start screen recording on both devices.
+  4. MO device dials the MT device's phone number.
+  5. Wait for MT device to reach 'ringing' state. Log PASS/FAIL.
+  6. MT device answers the call.
+  7. Wait for both devices to reach 'active' state. Log PASS/FAIL.
+  8. Hold the call from MO side.
+  9. Verify MO shows 'held'. Log PASS/FAIL.
+  10. Resume the call from MO side.
+  11. Verify both sides return to 'active'. Log PASS/FAIL.
+  12. MO device ends the call.
+  13. Verify both devices return to 'idle'. Log PASS/FAIL.
+  14. Stop screen recordings.
+  15. Fetch execution reports for both devices.
+  16. Release both devices.
+  Provide a final certification verdict (PASS/FAIL/CONDITIONAL PASS).

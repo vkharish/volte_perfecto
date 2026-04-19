@@ -1,0 +1,24 @@
+name: IMS_Reregistration
+description: IMS re-registration after airplane mode cycle
+
+devices:
+  - label: UE
+    os: Android
+    operator: Verizon
+
+prompt: |
+  Execute IMS re-registration certification on the reserved Android/Verizon device (label: UE).
+
+  1. Reserve the UE device (Android, Verizon).
+  2. Check network info — verify it shows LTE and not WiFi. Log PASS/FAIL.
+  3. Enable airplane mode on UE.
+  4. Wait 5 seconds.
+  5. Disable airplane mode.
+  6. Wait 15 seconds for IMS stack to re-register.
+  7. Check network info again — verify LTE is restored. Log PASS/FAIL.
+  8. Make a test call from UE to verify VoLTE is functional post re-registration.
+     Dial +12125550100 (test PSTN or another device number if available).
+  9. Wait for 'ringing' or 'active' state to confirm call was placed. Log PASS/FAIL.
+  10. End the call. Verify UE returns to 'idle'. Log PASS/FAIL.
+  11. Release UE device.
+  Final verdict: PASS if all LTE/IMS/call checks pass.
